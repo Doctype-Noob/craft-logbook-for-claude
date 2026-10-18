@@ -11,7 +11,7 @@ Set up the user's Craft logbook. Follow the `logbook` skill and the formats in i
 3. **Ask three short questions**, all in one message, with defaults so the user can just say "defaults":
    - Logbook folder name (default: **Claude Logbook**, so it isn't confused with Craft's own task Logbook)
    - Logging mode: **full** (your prompts word for word and Claude's complete responses, in one doc per chat) or **summary** (what happened, no prompts or responses). Default: full
-   - Your first name and one line about what you work on (for the About section)
+   - Your first name and one line about what you work on (for the About section). There is no default for this one: if the user says "defaults" or skips it, draft the line from what you already know about them, show it, and ask "Use this?" before writing it. Never write a name or details the user hasn't seen.
 
    If Start Here already answers all three, skip the questions, but still confirm the logging mode in one line before you write anything, for example: "Logging mode is full: every chat gets its own doc with your prompts word for word and my complete responses. Say summary if you'd rather not keep them." Then carry on without waiting.
 

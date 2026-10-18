@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.2 (2026-10-18)
+
+Small fixes from testing setup in an empty Craft space.
+
+- Screenshots and attachments are logged with their file name and a short description, so you can find the file later. Craft's connector can't embed a chat attachment, so this is the next best thing.
+- Setup no longer fills the About section without asking. If you skip the name question, Claude drafts the line, shows it and asks before writing it.
+- The toggle indent fix now covers edits as well as additions. Lines edited inside a response toggle no longer jump out of it.
+- Older docs under Earlier history are always real Craft links, never plain titles.
+
 ## 0.2.1 (2026-10-18)
 
 Fixes from the first real chat on 0.2.0.

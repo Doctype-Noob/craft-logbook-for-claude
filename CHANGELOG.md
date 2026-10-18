@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.5 (2026-10-18)
+
+Listing details for Claude's directory. No change to how the plugin logs.
+
+- Added links the directory shows: the GitHub repository, documentation (this README), support (GitHub issues) and terms of use.
+- Added terms of use (TERMS.md). Short version: free, MIT, as is, and your content stays yours.
+- Points the directory at the icon file directly.
+
 ## 0.2.4 (2026-10-18)
 
 Fixes from the directory's validation. No change to how the plugin logs.

@@ -96,6 +96,7 @@ The plugin itself stores nothing and sends nothing anywhere else. Full privacy p
 - `.mcp.json`: the Craft connector
 - `images/`: the screenshots in this README, from a demo space
 - `PRIVACY.md`: the privacy policy
+- `TERMS.md`: the terms of use
 
 ## About
 
@@ -103,6 +104,10 @@ Built by Josh Laronge, a photographer who builds small tools with Claude. More a
 
 Not affiliated with or endorsed by Craft Docs Limited or Anthropic. Craft is a trademark of Craft Docs Limited.
 
+## Help
+
+Questions or something broken? Open an issue at [github.com/Doctype-Noob/craft-logbook-for-claude/issues](https://github.com/Doctype-Noob/craft-logbook-for-claude/issues) or email josh@laronge.com.
+
 ## License
 
-MIT. See LICENSE.
+MIT. See LICENSE. Terms of use: [TERMS.md](TERMS.md).

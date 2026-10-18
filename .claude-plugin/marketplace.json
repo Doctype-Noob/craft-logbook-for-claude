@@ -9,7 +9,7 @@
     {
       "name": "laronge-llc-logbook",
       "source": "./",
-      "description": "Keeps a running record of your work with Claude in your Craft space: a Start Here map, per-project decisions logs, and an activity log with your prompts and Claude's responses."
+      "description": "Keeps a record of your work with Claude in your Craft space: a Start Here map, a dashboard per project, one doc per chat with your prompts and Claude's responses, and an activity log."
     }
   ]
 }

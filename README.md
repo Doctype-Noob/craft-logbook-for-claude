@@ -1,12 +1,13 @@
 # Craft Logbook for Claude
 
-Craft Logbook for Claude keeps a record of your work with Claude inside your own Craft space, so you never start a new chat by re-explaining your projects.
+Craft Logbook for Claude keeps a record of your work with Claude inside your own Craft space: every prompt you send, word for word, and every response, filed by project. You never start a new chat by re-explaining your projects, and you can find what Claude said three weeks ago without scrolling through old chats.
 
-It builds three things and keeps them current:
+It builds four things and keeps them current:
 
-- **Start Here**: one page that maps your space. Who you are, how you like to work, every project with its status, and the one doc to read first. Point any AI at it, Claude or otherwise, and it can find its way around.
-- **A Decisions Log for each project**: dated entries with what was decided, what's still open, and, by default, your prompts and Claude's responses.
-- **An Activity Log**: one short entry per session across every project, each pointing to the detail.
+- **Start Here**: one page that maps your space. Who you are, how you like to work, every project with its status, and where to look first. Point any AI at it, Claude or otherwise, and it can find its way around.
+- **A dashboard for each project**: the project's status, every chat newest first with a summary and where it left off, where things live, and how to rebuild the project from scratch. It has a red title and a red background so it stands out in the folder.
+- **One doc per chat**: your prompts word for word and Claude's complete responses, plus what was decided and where it left off.
+- **An Activity Log**: one short entry per chat across every project, each pointing to its chat doc.
 
 I built it because I'm bad at taking notes and worse at reading them. Claude does the writing now.
 
@@ -31,35 +32,46 @@ Then connect Craft: open the plugin's Connectors tab, select Connect, pick the C
 
 ## Use it
 
-1. Run **setup** once. In chat, type `/` and pick the logbook setup command, or just say "set up my logbook". It creates a Claude Logbook folder with Start Here and an Activity Log, asks three quick questions, and offers to add the projects you already have in Craft.
+1. Run **setup** once. In chat, type `/` and pick the logbook setup command, or just say "set up my logbook". It creates a Claude Logbook folder with Start Here, an Activity Log and a Logbook Format doc, asks three quick questions, and offers to add a dashboard to the projects you already have in Craft.
 2. Paste the always-log line setup gives you into Settings > Profile, in your preferences. Do this one. Without it, Claude only logs chats that look like they're about Craft. With it, every chat is covered.
-3. Work normally. When a conversation produces ideas, research, a decision or finished work, Claude logs it and tells you in one line.
-4. Want it logged right now? Run **log-session** (`/laronge-llc-logbook:log-session` in Claude Code and Cowork).
+3. Work normally. The first time a chat produces ideas, research, a decision or finished work, Claude starts a doc for that chat, asks once what the chat is called in your sidebar, and adds every exchange after that. It tells you in one line each time.
+4. Done for the day? Say "wrap up". Claude writes the prompt you paste to start the next chat, in the chat and at the end of the chat doc.
+5. Want it logged right now? Run **log-session** (`/laronge-llc-logbook:log-session` in Claude Code and Cowork).
+6. Have older chats from before you installed it? Run **backfill** from a chat in that project's Claude Project. It does the 3 most recent chats first so you can check them, then 5 at a time, asking before each batch.
 
 Two logging modes, set during setup and changeable any time in Start Here:
 
-- **full** (default): every entry includes your prompts word for word and Claude's responses in collapsed toggles
-- **summary**: headline, summary and open items only
+- **full** (default): each chat doc has your prompts word for word and Claude's complete responses in collapsed toggles
+- **summary**: what happened in each chat, no prompts or responses
+
+## Using it with other AI tools
+
+Setup writes a **Logbook Format** doc into your logbook folder. It's the full spec for every page and entry. Tell Gemini, ChatGPT or any AI with Craft access to read it first, and its chat docs will match Claude's. Each chat doc says which AI wrote it.
 
 One naming note: Craft has its own Logbook, where completed tasks go. This plugin doesn't touch it. When you say "my logbook" to Claude, it means Start Here and your logs.
+
+## Coming from 0.1.x
+
+Run setup again. It adds the Logbook Format doc and the new settings to your Start Here, and offers to add a dashboard to each project. Your old Overview and Decisions Log docs stay where they are, untouched, linked from the new dashboard under Earlier history. Then replace your always-log line with the new one setup gives you.
 
 ## What it won't do
 
 - **Delete anything.** Claude lists things that should go and you delete them.
-- **Log on a timer in chat.** In claude.ai chat, Claude logs because the plugin's skill and your always-log preference tell it to, not because a background process fires. It's reliable, not guaranteed. If a reply that mattered doesn't end with a log line, run log-session. In Claude Code and Cowork, a startup hook also reminds Claude the logbook exists.
-- **Rewrite history.** Entries are appended. Older summaries are kept below the current one.
+- **Rename or move your docs.** It only renames docs it created, such as a chat doc once you tell it the chat's name.
+- **Log on a timer in chat.** In claude.ai chat, Claude logs because the plugin's skill and your always-log preference tell it to, not because a background process fires. It's reliable, not guaranteed. The first log in a chat is the one most likely to be missed; once a chat has its doc, Claude adds every exchange. If a reply that mattered doesn't end with a log line, run log-session. In Claude Code and Cowork, a startup hook also reminds Claude the logbook exists.
+- **See every chat when backfilling.** Inside a Claude Project, Claude can only read that project's chats, and only with Settings > Search and reference chats turned on.
 
 ## Data
 
-Everything stays between Claude and your own Craft space. The plugin connects to Craft's official MCP server at `https://mcp.craft.do/my/mcp`, using your own Craft sign-in, and only reads and writes documents in the space you approve. Log entries can include your prompts and Claude's responses, so pick summary mode if you'd rather not keep them. Claude replaces passwords, API keys and card numbers with [redacted] before writing.
+Everything stays between Claude and your own Craft space. The plugin connects to Craft's official MCP server at `https://mcp.craft.do/my/mcp`, using your own Craft sign-in, and only reads and writes documents in the space you approve. Chat docs include your prompts and Claude's responses, so pick summary mode if you'd rather not keep them. Claude replaces passwords, API keys and card numbers with [redacted] before writing.
 
 The plugin itself stores nothing and sends nothing anywhere else. The only script, `hooks/session-start.sh`, prints a one-paragraph reminder at the start of a Claude Code or Cowork session and does nothing else.
 
 ## Files
 
 - `skills/logbook/SKILL.md`: when and how Claude logs
-- `skills/logbook/references/formats.md`: the exact entry and page formats
-- `commands/setup.md` and `commands/log-session.md`: the two commands
+- `skills/logbook/references/formats.md`: the exact page and entry formats, also written to Craft as Logbook Format
+- `commands/setup.md`, `commands/log-session.md` and `commands/backfill.md`: the three commands
 - `hooks/`: the session-start reminder (Claude Code and Cowork only)
 - `.mcp.json`: the Craft connector
 

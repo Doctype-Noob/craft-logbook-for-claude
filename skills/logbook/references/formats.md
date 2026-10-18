@@ -1,73 +1,149 @@
-# Logbook formats
+# Logbook Format
 
-Use these shapes exactly. They're markdown as the Craft connector accepts it: `>` makes a quote block, `+` makes a toggle, and a toggle's children must be indented two spaces and start with `- `.
+The exact shape of every page and entry in the logbook. Any AI writing to this Craft space should follow it, so docs look the same whoever wrote them. Where it says "the AI", write your own name (Claude, Gemini, ChatGPT).
 
-## Decisions Log entry (per project)
+Markdown here is as the Craft connector accepts it: `>` makes a quote block, `+` makes a toggle, a toggle's children are indented two spaces and start with `- `, and `<callout>` makes a callout. Use square brackets for placeholders, never angle brackets.
+
+## The layout
 
 ```
-**YYYY-MM-DD — Short headline of what happened**
+[Logbook folder, default "Claude Logbook"]
+  Start Here
+  Activity Log
+  Logbook Format          (this spec)
+  Other chats/            (chat docs that belong to no project)
 
-Summary: What was decided or done, and why. Two to five sentences.
+[Active projects folder, default "Current Projects"]
+  [Project]/
+    📌 [Project] — Overview and Chat Log      (the dashboard)
+    [Chat name] — Decisions and Prompt Log    (one per chat)
+    [Chat name] — Decisions and Prompt Log
+```
 
-Open: What's still unresolved or waiting on the user. Leave this line out if nothing is open.
+Defaults when Start Here doesn't say otherwise: logging mode full, dashboard color red, active projects folder Current Projects.
 
-**Prompt 1 (User):**
+## Chat doc
 
-> The user's first prompt, verbatim
+Title: `[Chat name] — Decisions and Prompt Log`. The chat name is what the chat is called in the user's sidebar. One doc per chat. Every later exchange in the same chat is appended to the same doc.
 
-+ Claude's response
-  - What Claude answered or did, complete in substance
-  - Files, code, or documents produced: name them and say where they live
+```
+<callout>Chat: [Chat name] ([Claude Project name] Claude Project, or regular chat) · Dates: YYYY-MM-DD (to YYYY-MM-DD if it spans days) · Written by: [the AI] · Project: [Project]</callout>
 
-**Prompt 2 (User):**
+**Summary:** What this chat did, two to four sentences, kept current as the chat goes.
 
-> The next prompt, verbatim
+**Decisions:** What the user decided, one per line. Leave this out if nothing was decided.
 
-+ Claude's response
+**Result:** What exists now because of this chat: files, versions, published pages, answers.
+
+**Left off:** Where it stopped and what's next. At a wrap-up: "Next-chat prompt is at the end of this doc."
+
+***
+
+**Prompt 1 ([First name]):**
+
+> The user's first prompt, word for word, typos included. Each paragraph its own > line. [screenshot of …] or [attached: file name] for attachments.
+
++ [the AI]'s response
+  - Everything the response said, complete in substance, as bullets
+  - Files, code or documents produced: name them and say where they live, don't paste them
+
+**Prompt 2 ([First name]):**
+
+> The next prompt
+
++ [the AI]'s response
   - ...
 ```
 
-Replace "User" with the user's first name if Start Here gives one.
+Use "User" if Start Here gives no first name. A backfilled chat adds "· Backfilled YYYY-MM-DD · Chat link: [url]" to the callout.
 
-In **summary** mode, stop after the Open line.
-
-## Activity Log entry (whole space)
+At a wrap-up, add at the end:
 
 ```
-**YYYY-MM-DD — Project: short headline**
+***
 
-One or two sentences. See *Folder → Project — Decisions Log* for detail.
+**Next chat prompt:**
 
-> Prompt 1: the prompt, verbatim
-
-+ Claude's response
-  - One or two bullets
+> The prompt to paste into a new chat, each paragraph its own > line
 ```
 
-In **summary** mode, stop after the pointer sentence.
-
-## Always-log preference line
-
-The line the user pastes into Settings > Profile so logging happens in every chat:
+In **summary** mode, the chat doc keeps the callout and the four header lines, then replaces the prompts with:
 
 ```
-Always, in every chat: when a reply gives me something worth finding later (ideas, options, research, a plan, a decision, or finished work), use the Craft Logbook for Claude logbook skill to log it to my Craft logbook at the end of that same reply, even if I haven't decided anything yet, and tell me in one line.
+***
+
+**What happened:**
+
+- YYYY-MM-DD: one line per exchange worth keeping
 ```
+
+## Dashboard
+
+Title: `📌 [Project] — Overview and Chat Log`. One per project folder. Title color and page background in the dashboard color: red is title #D32F2F (dark mode #FF6B6B) and a solid page backdrop #c10007.
+
+```
+<callout>Status: [Status] · Last activity YYYY-MM-DD · Next: [one line]</callout>
+
+## Chats, newest first
+
+### [Chat name](craft link to the chat doc)
+
+YYYY-MM-DD · [Claude Project name] Claude Project, or regular chat
+
+**Summary:** One or two sentences.
+
+**Result:** One or two sentences.
+
+**Left off:** One sentence.
+
+### [Older chat name](link)
+
+...
+
+## Where things live
+
+- **[Thing]:** where it is (repo, site, file, other app)
+
+## Rebuild from scratch
+
+1. Read this page, then the chat docs from oldest to newest.
+1. [Steps to get the project back from nothing: where the code or files are, what to install or sign in to, what to paste where.]
+1. Start a new chat with the next-chat prompt at the end of the newest chat doc.
+
+## Earlier history
+
+- [Older docs from before this layout, such as an Overview or a Decisions Log, linked by title. Leave this section out if there are none.]
+```
+
+Status values: Active, Paused, On hold, Idea, Done, Cold case, Dropped.
+
+## Activity Log entry
+
+One entry per chat per day, at the bottom of the Activity Log (newest at the bottom). No responses; the chat doc has them.
+
+```
+**YYYY-MM-DD — [Project]: short headline**
+
+One sentence. See *[Folder] → [Project] → [Chat name] — Decisions and Prompt Log*.
+
+> First prompt: the user's first prompt in the chat, word for word (the first paragraph if it's long)
+```
+
+For a one-off chat, the project is "Other" and the path is *[Logbook folder] → Other chats → [Chat name] — Decisions and Prompt Log*.
 
 ## Start Here page
 
-Create it with these sections, in this order. Section numbers help another AI find its way.
+Sections in this order. Section numbers help another AI find its way.
 
 ```
-<callout>Read this page first. It maps this Craft space: who the user is, how they work, every project and its status, and which document holds the detail. It is a map, not a copy. Last updated YYYY-MM-DD.</callout>
+<callout>Read this page first. It maps this Craft space: who the user is, how they work, every project and its status, and where the detail lives. It is a map, not a copy. Last updated YYYY-MM-DD.</callout>
 
 ## 1. How to find anything
 
-1. Find the project in the table in section 4. It gives the status and the one doc to read first.
-2. Read that doc.
-3. For history or the latest change, read the bottom of the project's Decisions Log. Logs are dated, newest at the bottom, and are the source of truth when docs disagree.
-
-For a timeline across all projects, read the Activity Log.
+1. Find the project in the table in section 4. Open its dashboard (Read first).
+2. The dashboard lists every chat, newest first, with where each one left off. Open a chat's doc for the prompts and responses word for word.
+3. For a timeline across all projects, read the Activity Log.
+4. To write to this logbook from any AI, follow the Logbook Format doc.
 
 ## 2. About me
 
@@ -85,30 +161,43 @@ For a timeline across all projects, read the Activity Log.
 ## 5. Logbook settings
 
 - Logging mode: full
-- Always-log preference: not yet (or added YYYY-MM-DD)
+- Dashboard color: red
+- Always-log preference: not yet (or added YYYY-MM-DD, v0.2.0 line)
 - Active projects folder: Current Projects
 - Logbook folder: (name and ID; default name Claude Logbook)
+- Other chats folder: (ID)
 - Activity Log: (ID)
+- Logbook Format: (ID)
 
 + Document IDs (for AI tools reading Craft by ID)
   - Start Here: (ID)
   - Activity Log: (ID)
+  - Logbook Format: (ID)
 ```
 
-Status values: Active, Paused, On hold, Idea, Done, Cold case, Dropped.
+"Read first" holds the project's dashboard title.
 
-## Project Overview (new projects)
+## Next chat prompt
+
+Written at a wrap-up. It has to work in a fresh chat that knows nothing.
 
 ```
-<callout>Current state as of YYYY-MM-DD.</callout>
+Picking up [Project] from the chat "[Chat name]" (YYYY-MM-DD). Before anything else, open Craft: [Folder] → [Project] → "📌 [Project] — Overview and Chat Log", then the end of "[Chat name] — Decisions and Prompt Log". Confirm where we are in 3-4 lines.
 
-**What it is:** One or two sentences.
+Where we stopped:
+- [Facts the next chat needs: versions, links, what passed, what's waiting on the user]
 
-**Where it stands:** Current status and the next step.
+Next, in order:
+1. [The next steps]
 
-**Where things live:** Files, repos, sites, other tools.
-
-**Open questions:** Anything waiting on the user.
+How to work:
+- [Any working rules the user set in this chat]
 ```
 
-When the state changes, rewrite the callout date and the sections under it. If the old text is worth keeping, move it below a divider (`***`) as history instead of deleting it.
+## Always-log preference line
+
+The line the user pastes into Settings > Profile, in the preferences field, so logging happens in every chat. It replaces any older always-log line.
+
+```
+Always, in every chat: when a reply gives me something worth finding later (ideas, options, research, a plan, a decision, or finished work), use the Craft Logbook for Claude logbook skill to log it to my Craft logbook at the end of that same reply, even if I haven't decided anything yet. Once a chat has its own log doc, add every exchange to it. Tell me in one line.
+```

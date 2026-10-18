@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.0 (2026-10-18)
+
+A new layout built around finding a chat again. If you're on 0.1.x, run setup again and replace your always-log line.
+
+- One doc per chat, named after the chat: your prompts word for word and Claude's complete responses, plus Summary, Decisions, Result and Left off at the top. Claude asks once what the chat is called in your sidebar.
+- A dashboard per project, "Overview and Chat Log", with every chat newest first and where each one left off, Where things live, and Rebuild from scratch. Red title and red page background so it stands out in the folder.
+- Once a chat has its doc, Claude adds every exchange to it instead of judging what's worth keeping. That judgment call is where most missed logs came from.
+- The Activity Log gets one entry per chat with your first prompt, pointing to the chat doc. Responses live only in the chat doc.
+- New backfill command: logs a project's earlier chats, 3 on the first run, then 5 per batch, asking before each. Never logs a chat twice.
+- Say "wrap up" and Claude writes the prompt to start your next chat, in the chat and at the end of the chat doc.
+- Setup writes a Logbook Format doc to Craft so Gemini, ChatGPT or any AI can write matching docs. Each chat doc says which AI wrote it.
+- One-off chats go in a new Other chats folder instead of only the Activity Log, so their prompts are kept too.
+- Old Overview and Decisions Log docs are left as they are and linked from the new dashboard under Earlier history.
+- New always-log line. Replace the old one in your preferences.
+
 ## 0.1.3 (2026-10-18)
 
 - Claude no longer waits for a decision before logging. A reply with options or research gets logged when it's given, and a later decision is added to the same entry. In testing, Claude held off with "nothing's decided yet," which loses the chat if you never pick.

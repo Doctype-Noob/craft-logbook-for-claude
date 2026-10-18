@@ -27,7 +27,7 @@ Set up the user's Craft logbook. Follow the `logbook` skill and the formats in i
 
 5. **Adopt existing projects.** List the user's top-level folders and the folders inside any folder that looks like a projects folder (such as "Current Projects" or "Projects"). Show them as a short list, mark the ones already in Start Here's table, and ask which ones to add or give a dashboard. For each one the user picks:
    - Add a row to the table if it isn't there.
-   - If the folder has no "📌 … — Overview and Chat Log" doc, create the dashboard with the dashboard color. Fill **Where things live** from what the folder's docs say. List any older docs in the folder (an Overview, a Decisions Log, notes) under **Earlier history**, linked by title. Don't rename, move or convert them.
+   - If the folder has no "📌 … — Overview and Chat Log" doc, create the dashboard, colored as the skill says (title and page background only, never the body text). Fill **Where things live** from what the folder's docs say. List any older docs in the folder (an Overview, a Decisions Log, notes) under **Earlier history**, each as a link to the doc. Don't rename, move or convert them.
    - Point the row's "Read first" at the dashboard.
    - Offer to backfill the project's past chats with the `backfill` command, and say it has to run from a chat inside that project's Claude Project if it has one.
 

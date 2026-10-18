@@ -54,7 +54,7 @@ Pick the project in Start Here's table that this chat is about. If the chat is i
 
 ## Writing the first log of a chat
 
-1. **Make sure the project has a dashboard.** If its folder has no "📌 … — Overview and Chat Log" doc, create one (format in `references/formats.md`). Set its title color and page background to the dashboard color from Start Here (default red). If the folder holds older docs from before v0.2.0, such as an Overview or a Decisions Log, don't rename, convert or move them: link them under **Earlier history** on the new dashboard.
+1. **Make sure the project has a dashboard.** If its folder has no "📌 … — Overview and Chat Log" doc, create one (format in `references/formats.md`). Color it as described under "Dashboard color" at the end of this skill: title and page background only, never the body text. If the folder holds older docs from before v0.2.0, such as an Overview or a Decisions Log, don't rename, convert or move them: link them under **Earlier history** on the new dashboard, using each doc's Craft link. Then point the project's "Read first" in Start Here at the new dashboard, even when the project already had a row.
 2. **Create the chat doc** in the project's folder: "[Chat name] — Decisions and Prompt Log". You can't see the chat's title, so use a short suggested name based on the topic, and ask the user once in your reply what the chat is called in their sidebar. If they answer, rename the doc and its dashboard entry to match. If they don't, keep your name. Write the header and every exchange so far.
 3. **Add the chat to the top of the dashboard's Chats list**, right under the "Chats, newest first" heading, with the link to the chat doc, Summary, Result and Left off. Use the Craft app link the connector returns when it creates the doc. Update the dashboard's status callout.
 4. **Add one entry to the Activity Log**, at the bottom, pointing to the chat doc, with the user's first prompt of the chat word for word.
@@ -117,7 +117,11 @@ The Craft connector's tool names and arguments can change, so go by the tool des
 
 - **Append** to a chat doc or the Activity Log by adding blocks at the end of its page; don't replace the page.
 - **Newest chat first** on a dashboard: add the new entry before the first existing chat entry, or right after the "Chats, newest first" heading if there is none.
-- **Toggles** need their children indented two spaces and starting with "- ", or the toggle comes out empty.
+- **Toggles** need their children indented two spaces and starting with "- ", or the toggle comes out empty. When you add a single line inside an existing toggle (next to another child) or update one, the connector can drop the indent and put the line outside the toggle. Set its indentation level to 1 explicitly, or read it back and fix it.
 - **No angle brackets** around words in your markdown, such as "<Project>". The connector reads them as HTML and rejects the write. Use square brackets for placeholders.
-- **Dashboard color**: set the color on the dashboard's page block itself (this colors the title only; light #D32F2F, dark #FF6B6B for red), and give the page a solid backdrop in the dashboard color (red is #c10007). The backdrop is what shows on Craft's folder thumbnails.
+- **Dashboard color**: two settings, nothing else.
+  1. The title: set a block color on the dashboard's page block itself (for red: color #D32F2F, dark color #FF6B6B). A block color on the page block colors the title only.
+  2. The page background: a solid backdrop in the dashboard color (red is #c10007). This is what shows on Craft's folder thumbnails.
+
+  Never set the page's text color, theme color or a page theme. A page text color turns every line of the dashboard red and makes it hard to read; the body text stays the default black. If a dashboard already has a page text color, reset the page to the default theme with the same backdrop, then set the title color again.
 - **Renaming a doc** is an update to its page block's text.

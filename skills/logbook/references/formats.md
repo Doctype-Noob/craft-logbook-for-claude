@@ -79,7 +79,7 @@ In **summary** mode, the chat doc keeps the callout and the four header lines, t
 
 ## Dashboard
 
-Title: `📌 [Project] — Overview and Chat Log`. One per project folder. Title color and page background in the dashboard color: red is title #D32F2F (dark mode #FF6B6B) and a solid page backdrop #c10007.
+Title: `📌 [Project] — Overview and Chat Log`. One per project folder. Only the title and the page background take the dashboard color: for red, the title is #D32F2F (dark mode #FF6B6B), set as the page block's own color, and the page gets a solid backdrop #c10007. Body text stays the default black. Never set a page-wide text color or theme.
 
 ```
 <callout>Status: [Status] · Last activity YYYY-MM-DD · Next: [one line]</callout>
@@ -112,7 +112,7 @@ YYYY-MM-DD · [Claude Project name] Claude Project, or regular chat
 
 ## Earlier history
 
-- [Older docs from before this layout, such as an Overview or a Decisions Log, linked by title. Leave this section out if there are none.]
+- [Older docs from before this layout, such as an Overview or a Decisions Log, each as a link to the doc. Leave this section out if there are none.]
 ```
 
 Status values: Active, Paused, On hold, Idea, Done, Cold case, Dropped.

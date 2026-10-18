@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.1 (2026-10-18)
+
+Fixes from the first real chat on 0.2.0.
+
+- Dashboards color only the title and the page background. In testing, Claude set a page-wide text color and the whole dashboard came out red. Body text now stays black, and the skill says how to reset a dashboard that already went red.
+- When Claude adds a dashboard to a project that already has a row in Start Here, it now points "Read first" at the dashboard. Before, only brand-new projects got that.
+- Older docs listed under Earlier history are now links, not plain titles.
+- Lines added inside a toggle (such as the Document IDs list) keep their indent. The connector was dropping it and putting them outside the toggle.
+
 ## 0.2.0 (2026-10-18)
 
 A new layout built around finding a chat again. If you're on 0.1.x, run setup again and replace your always-log line.

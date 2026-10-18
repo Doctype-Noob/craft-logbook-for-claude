@@ -1,0 +1,15 @@
+{
+  "name": "laronge-plugins",
+  "owner": {
+    "name": "Josh Laronge",
+    "url": "https://laronge.com"
+  },
+  "description": "Free plugins by Josh Laronge (laronge.com).",
+  "plugins": [
+    {
+      "name": "laronge-llc-logbook",
+      "source": "./",
+      "description": "Keeps a running record of your work with Claude in your Craft space: a Start Here map, per-project decisions logs, and an activity log with your prompts and Claude's responses."
+    }
+  ]
+}

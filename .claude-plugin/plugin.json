@@ -1,0 +1,19 @@
+{
+  "name": "laronge-llc-logbook",
+  "displayName": "Craft Logbook for Claude",
+  "version": "0.1.3",
+  "description": "Keeps a running record of your work with Claude in your Craft space: a Start Here map of every project, a decisions log per project, and a cross-project activity log, each entry with your prompts and Claude's responses.",
+  "author": {
+    "name": "Josh Laronge",
+    "url": "https://laronge.com"
+  },
+  "homepage": "https://laronge.com",
+  "license": "MIT",
+  "keywords": [
+    "craft",
+    "logging",
+    "notes",
+    "project-management",
+    "handoff"
+  ]
+}

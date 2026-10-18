@@ -11,6 +11,26 @@ It builds four things and keeps them current:
 
 I built it because I'm bad at taking notes and worse at reading them. Claude does the writing now.
 
+## What it looks like
+
+These are from a demo Craft space for a made-up bakery owner named Sam.
+
+A project's dashboard. Every chat, newest first, with where each one left off:
+
+![A project dashboard in Craft with a red title and background, listing chats newest first with Summary, Result and Left off](images/dashboard.png)
+
+One chat's doc. Sam's prompt word for word, Claude's full response in a toggle:
+
+![A chat doc in Craft showing the summary, decisions, result, Sam's first prompt and Claude's response](images/chat-doc.png)
+
+The project folder. The red dashboard stands out from the chat docs:
+
+![A Craft folder in grid view: the red-framed dashboard first, then one doc per chat](images/project-folder.png)
+
+Start Here, the map of the whole space:
+
+![The Start Here page in Craft: how to find anything, about the user, how they work with AI, and a table of projects](images/start-here.png)
+
 ## What you need
 
 - A Claude plan that supports plugins and custom connectors (Pro, Max, Team or Enterprise)
@@ -74,6 +94,7 @@ The plugin itself stores nothing and sends nothing anywhere else. The only scrip
 - `commands/setup.md`, `commands/log-session.md` and `commands/backfill.md`: the three commands
 - `hooks/`: the session-start reminder (Claude Code and Cowork only)
 - `.mcp.json`: the Craft connector
+- `images/`: the screenshots in this README, from a demo space
 
 ## About
 

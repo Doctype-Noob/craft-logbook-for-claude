@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.3 (2026-10-18)
+
+README only. No change to how the plugin logs.
+
+- Added four screenshots from a demo Craft space: a project dashboard, a chat doc, a project folder and Start Here. The README is the plugin's page in Claude's directory, so it now shows what you get.
+
 ## 0.2.2 (2026-10-18)
 
 Small fixes from testing setup in an empty Craft space.

@@ -85,7 +85,7 @@ Run setup again. It adds the Logbook Format doc and the new settings to your Sta
 
 Everything stays between Claude and your own Craft space. The plugin connects to Craft's official MCP server at `https://mcp.craft.do/my/mcp`, using your own Craft sign-in, and only reads and writes documents in the space you approve. Chat docs include your prompts and Claude's responses, so pick summary mode if you'd rather not keep them. Claude replaces passwords, API keys and card numbers with [redacted] before writing.
 
-The plugin itself stores nothing and sends nothing anywhere else. The only script, `hooks/session-start.sh`, prints a one-paragraph reminder at the start of a Claude Code or Cowork session and does nothing else.
+The plugin itself stores nothing and sends nothing anywhere else. Full privacy policy: [PRIVACY.md](PRIVACY.md). The only script, `hooks/session-start.sh`, prints a one-paragraph reminder at the start of a Claude Code or Cowork session and does nothing else.
 
 ## Files
 
@@ -95,6 +95,7 @@ The plugin itself stores nothing and sends nothing anywhere else. The only scrip
 - `hooks/`: the session-start reminder (Claude Code and Cowork only)
 - `.mcp.json`: the Craft connector
 - `images/`: the screenshots in this README, from a demo space
+- `PRIVACY.md`: the privacy policy
 
 ## About
 

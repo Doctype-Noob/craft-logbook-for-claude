@@ -7,8 +7,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash",
-            "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh"],
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh",
+            "args": [],
             "timeout": 10
           }
         ]

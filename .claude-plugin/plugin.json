@@ -1,7 +1,7 @@
 {
   "name": "laronge-llc-logbook",
   "displayName": "Craft Logbook for Claude",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Keeps a record of your work with Claude in your Craft space: a Start Here map, a dashboard per project, one doc per chat with your prompts word for word and Claude's responses, and a cross-project activity log. Backfills older chats.",
   "author": {
     "name": "Josh Laronge",
@@ -9,6 +9,7 @@
   },
   "homepage": "https://laronge.com",
   "license": "MIT",
+  "privacyPolicyUrl": "https://github.com/Doctype-Noob/craft-logbook-for-claude/blob/main/PRIVACY.md",
   "keywords": [
     "craft",
     "logging",

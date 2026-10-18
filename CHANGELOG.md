@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.4 (2026-10-18)
+
+Fixes from the directory's validation. No change to how the plugin logs.
+
+- Added an icon: a dark notebook with a red bookmark.
+- Added a privacy policy (PRIVACY.md), linked from the plugin's settings. Short version: the plugin talks only to Craft and collects nothing.
+- The session-start reminder now runs its script directly instead of through `bash`, so the directory's checker can read it. Same reminder, same text.
+
 ## 0.2.3 (2026-10-18)
 
 README only. No change to how the plugin logs.

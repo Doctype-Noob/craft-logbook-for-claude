@@ -41,6 +41,6 @@ Set up the user's Craft logbook. Follow the `logbook` skill and the formats in i
 
    Explain that it starts with "Always" because Claude applies preferences only when they seem relevant unless they say they apply every time. You can't change their settings yourself, so don't claim it's done. Record the answer in Start Here's Logbook settings as "Always-log preference: added YYYY-MM-DD, v0.2.0 line" once the user says they pasted it, or "not yet" if they haven't. If Start Here already says the v0.2.0 line was added, skip this step.
 
-8. **Log the setup** as a one-off chat (chat doc in Other chats, Activity Log entry), then confirm the new or changed docs by reading them by ID (not by search). Tell the user in two or three lines what was created and where, and to pin 📌 All Dashboards in Craft: it's the way in to every project and chat.
+8. **Log the setup** as a one-off chat (chat doc in Other chats, Activity Log entry), then confirm the new or changed docs by reading them by ID (not by search). Tell the user in two or three lines what was created and where, and to pin and star 📌 All Dashboards in Craft (right-click it: Pin keeps it at the top of the logbook folder, Star puts it in the sidebar). It's the way in to every project and chat, and the connector can't pin or star for them.
 
 Never delete, rename or move anything the user already has.

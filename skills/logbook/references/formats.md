@@ -123,7 +123,7 @@ Status values: Active, Paused, On hold, Idea, Done, Cold case, Dropped.
 Title: `📌 All Dashboards`. One per logbook, in the logbook folder. It's the page the user pins: one line per project, each linking to that project's dashboard, so every chat is two clicks away. Same coloring rule as a dashboard, in the All Dashboards color: for green, the title is #2E7D32 (dark mode #66BB6A), set as the page block's own color, and the page gets a solid backdrop #1B7A34. Body text stays the default black. Never set a page-wide text color or theme.
 
 ```
-<callout>Pin this page. It links to every project dashboard and is kept current by the AI that logs here. Last updated YYYY-MM-DD.</callout>
+<callout>Pin this page in its folder and star it so it's always in Craft's sidebar (right-click it for both). It links to every project dashboard and is kept current by the AI that logs here. Last updated YYYY-MM-DD.</callout>
 
 ## Project dashboards
 

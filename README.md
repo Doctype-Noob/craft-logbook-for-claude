@@ -16,6 +16,14 @@ I built it because I'm bad at taking notes and worse at reading them. Claude doe
 
 These are from a demo Craft space for a made-up bakery owner named Sam.
 
+All Dashboards, the page to pin. One line per project, each linking to its dashboard:
+
+![The All Dashboards page in Craft with a green title and background, linking four project dashboards with their status and last activity](images/all-dashboards.png)
+
+The logbook folder with All Dashboards pinned at the top and starred in the sidebar:
+
+![The Claude Logbook folder in Craft: All Dashboards pinned at the top and starred in the sidebar, next to Start Here, the Activity Log, Other chats and Logbook Format](images/logbook-folder.png)
+
 A project's dashboard. Every chat, newest first, with where each one left off:
 
 ![A project dashboard in Craft with a red title and background, listing chats newest first with Summary, Result and Left off](images/dashboard.png)
@@ -53,7 +61,7 @@ Then connect Craft: open the plugin's Connectors tab, select Connect, pick the C
 
 ## Use it
 
-1. Run **setup** once. In chat, type `/` and pick the logbook setup command, or just say "set up my logbook". It creates a Claude Logbook folder with All Dashboards, Start Here, an Activity Log and a Logbook Format doc, asks three quick questions, and offers to add a dashboard to the projects you already have in Craft. Then pin All Dashboards in Craft.
+1. Run **setup** once. In chat, type `/` and pick the logbook setup command, or just say "set up my logbook". It creates a Claude Logbook folder with All Dashboards, Start Here, an Activity Log and a Logbook Format doc, asks three quick questions, and offers to add a dashboard to the projects you already have in Craft. Then right-click All Dashboards in Craft, pin it and star it. Pinned, it sits at the top of the logbook folder; starred, it's in the sidebar wherever you are. Claude can't do either for you, because Craft's connector doesn't offer them.
 2. Paste the always-log line setup gives you into Settings > Profile, in your preferences. Do this one. Without it, Claude only logs chats that look like they're about Craft. With it, every chat is covered.
 3. Work normally. The first time a chat produces ideas, research, a decision or finished work, Claude starts a doc for that chat, asks once what the chat is called in your sidebar, and adds every exchange after that. It tells you in one line each time.
 4. Done for the day? Say "wrap up". Claude writes the prompt you paste to start the next chat, in the chat and at the end of the chat doc.
@@ -73,7 +81,7 @@ One naming note: Craft has its own Logbook, where completed tasks go. This plugi
 
 ## Coming from 0.2.x
 
-Nothing to do. The next chat Claude logs builds All Dashboards from your Start Here table and tells you where it is. Pin it. Running setup again does the same thing and also updates your Logbook Format doc.
+Nothing to do. The next chat Claude logs builds All Dashboards from your Start Here table and tells you where it is. Pin it and star it. Running setup again does the same thing and also updates your Logbook Format doc.
 
 ## Coming from 0.1.x
 

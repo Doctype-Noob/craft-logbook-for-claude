@@ -9,6 +9,8 @@ One page to pin. Every chat is now two clicks from it.
 - Projects that don't have a dashboard yet are listed too, linking to their older Overview or Current State, and move up when they get one.
 - Already on 0.2.x? The next logged chat builds All Dashboards from your Start Here table. Setup does it too.
 - Start Here gets a section 6 that tells any AI, not only Claude, to keep All Dashboards current.
+- Claude tells you to pin and star All Dashboards when it creates it. Craft's connector can't do either, so it's one right-click for you.
+- Two new README screenshots: All Dashboards, and the logbook folder with it pinned and starred.
 
 ## 0.2.5 (2026-10-18)
 

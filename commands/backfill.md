@@ -25,6 +25,7 @@ Backfill only reads past chats and only adds to Craft. It never edits or deletes
    - Write every prompt word for word and every response complete in substance, as in full mode, or the summary-mode shape if Start Here says summary. Mark attachments and screenshots in square brackets. Replace any password, API key, card number or similar with [redacted].
    - Add an entry to the dashboard's Chats list in date order (newest first), with the chat link on its date line.
    - Recent chats on All Dashboards: if the chat already has a line there ("not logged", say), update it in place with the project and log link. Otherwise add a line only if the chat is newer than the oldest of the 20 lines, in date order, with its chat link, then trim the list to 20. An older chat gets no line.
+   - While you have the recent-chats listing, add missing links to Recent chats lines and rename any linked line whose chat was renamed in Claude, as the skill describes.
    - If a long chat won't fit in what's left of this conversation, stop at the last complete prompt, add "Backfill stopped at Prompt N; earlier part only" to the doc's Left off, and tell the user to run backfill again in a new chat to finish it.
 
 6. **Record the run.** Add one Activity Log entry for the whole batch, not one per chat: "YYYY-MM-DD — [Project]: backfilled N earlier chats", listing the chat docs by title. Update the dashboard's status callout, Start Here's last activity and the project's line in All Dashboards only if they're now wrong.

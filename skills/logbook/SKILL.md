@@ -136,7 +136,8 @@ All Dashboards is the page the user pins, so a stale line there means a lost cha
 - **A chat's first log** adds its line at the top of Recent chats, right under the section's intro line. Check first for a line with the same chat name or link (a "not logged" line, say); if there is one, remove it, so the chat appears once.
 - **More than 20 lines**: remove lines from the bottom until there are 20. Read the section back after adding so you count what's really there, not what you expect.
 - **The chat doc is renamed**: rename its Recent chats line in the same step.
-- **Missing links**: a chat can't see its own claude.ai link. When you list recent chats for any reason (setup, backfill), add the link to any line whose chat name matches and has none.
+- **Missing links**: a chat can't see its own claude.ai link. When you list recent chats for any reason (setup, backfill), add the link to any line whose chat name matches and has none. Also add it to the chat doc's callout as "Chat link: [url]".
+- **Renamed in Claude**: in the same listing, match linked lines by link, not name. If a chat's name in Claude no longer matches its line, rename the line, the chat doc (title and callout), its dashboard entry and its Activity Log pointer to the new name. This is the only time you rename a chat doc you didn't create in this conversation: the user renamed it in Claude.
 - **No Recent chats section** on an older All Dashboards: add it right after Project dashboards, with the intro line from `references/formats.md`, and touch nothing else on the page.
 - **Chats inside Claude Projects** can't be listed from a regular chat. They appear only when they're logged from inside their project. Don't go looking for them.
 
@@ -145,7 +146,7 @@ If a project in Start Here's table is missing from All Dashboards, add its line 
 ## Rules
 
 - **Never delete.** Don't delete Craft documents, folders, blocks or log entries. If something should go, list it for the user and let them delete it. Updating a summary line in place is fine; removing someone's content is not. The one exception is All Dashboards, which only holds pointer lines you maintain: removing a project's line there when it moves sections or is dropped is fine, and so is removing Recent chats lines past the newest 20 or a duplicate line for the same chat.
-- **Never rename or move the user's own docs.** Rename only docs you created in this conversation (the chat doc, once the user gives its name).
+- **Never rename or move the user's own docs.** Rename only docs you created in this conversation (the chat doc, once the user gives its name), or a chat doc whose chat the user renamed in Claude (see Renamed in Claude).
 - **Don't copy detail upward.** The dashboard and Activity Log point to the chat doc; they don't repeat it.
 - **Refer to docs by title and path** in your replies, such as *Current Projects → Website → 📌 Website — Overview and Chat Log*.
 - **Keep the user's words.** Quote prompts exactly. Don't tidy them.

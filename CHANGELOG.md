@@ -8,6 +8,8 @@ Your recent chats on the page you pin, and a way back if you delete something in
 - Every chat's first log adds its line at the top, and the oldest drops off past 20. The chat docs stay; only the line goes. Renaming a chat doc renames its line.
 - A chat can't see its own Claude link, so its line starts without one. Setup and backfill fill links in when they list your chats.
 - Setup adds Recent chats to an existing All Dashboards without touching the rest, and fills it from your last 20 chats if Search and reference chats is on. Chats it can't match to a doc say "not logged".
+- Rename a chat in Claude and the logbook catches up: once a line has the chat's link, setup and backfill rename the line and its chat doc to match. Before a line has its link, tell Claude the new name.
+- Setup only lists chats that are logged in this space, and asks before adding the rest as "not logged".
 - One limit: a regular chat can't list chats inside Claude Projects. Those show up once they're logged from inside their project.
 - **Claude Project section** on each project dashboard: the Claude Project's name, its instructions word for word and its file list, saved the first time a chat logs from inside it and refreshed when they change. Enough to rebuild the project by hand.
 - **Deleted in Claude**: tell Claude you deleted a chat or a Claude Project and it marks the dashboard, All Dashboards and the Activity Log, with how to rebuild it. Nothing in Craft is removed. Claude gets no signal when you delete, so you have to tell it.

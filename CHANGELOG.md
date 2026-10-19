@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.7 (2026-10-19)
+
+Your recent chats on the page you pin, and a way back if you delete something in Claude.
+
+- **Recent chats** on All Dashboards: your last 20 chats, newest first, between Project dashboards and the rest. Each line has the date, the chat's name, its project and a link to its chat doc. The name links to the chat in Claude once Claude knows the link.
+- Every chat's first log adds its line at the top, and the oldest drops off past 20. The chat docs stay; only the line goes. Renaming a chat doc renames its line.
+- A chat can't see its own Claude link, so its line starts without one. Setup and backfill fill links in when they list your chats.
+- Setup adds Recent chats to an existing All Dashboards without touching the rest, and fills it from your last 20 chats if Search and reference chats is on. Chats it can't match to a doc say "not logged".
+- One limit: a regular chat can't list chats inside Claude Projects. Those show up once they're logged from inside their project.
+- **Claude Project section** on each project dashboard: the Claude Project's name, its instructions word for word and its file list, saved the first time a chat logs from inside it and refreshed when they change. Enough to rebuild the project by hand.
+- **Deleted in Claude**: tell Claude you deleted a chat or a Claude Project and it marks the dashboard, All Dashboards and the Activity Log, with how to rebuild it. Nothing in Craft is removed. Claude gets no signal when you delete, so you have to tell it.
+- Log first, answer last. Claude makes its log writes before writing its answer, so the answer is the last thing in the reply. Some Claude apps only show the text after the last tool call in full, and answers were getting collapsed into a summary.
+
 ## 0.2.6 (2026-10-19)
 
 One page to pin. Every chat is now two clicks from it.

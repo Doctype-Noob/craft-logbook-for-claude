@@ -31,6 +31,7 @@ Set up the user's Craft logbook. Follow the `logbook` skill and the formats in i
    - Add a row to the table if it isn't there.
    - If the folder has no "📌 … — Overview and Chat Log" doc, create the dashboard, colored as the skill says (title and page background only, never the body text). Fill **Where things live** from what the folder's docs say. List any older docs in the folder (an Overview, a Decisions Log, notes) under **Earlier history**, each as a link to the doc. Don't rename, move or convert them.
    - Point the row's "Read first" at the dashboard.
+   - If this setup chat is running inside that project's Claude Project, write the dashboard's Claude Project section (name, instructions word for word, file list), as the skill describes.
    - Add the dashboard's line to All Dashboards → Project dashboards, and remove the project's line under Projects without a dashboard yet if it had one.
    - Offer to backfill the project's past chats with the `backfill` command, and say it has to run from a chat inside that project's Claude Project if it has one.
 

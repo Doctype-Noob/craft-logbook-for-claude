@@ -105,10 +105,20 @@ YYYY-MM-DD · [Claude Project name] Claude Project, or regular chat
 
 - **[Thing]:** where it is (repo, site, file, other app)
 
+## Claude Project
+
+Name: [Claude Project name] · Saved YYYY-MM-DD · Last checked YYYY-MM-DD
+
++ Instructions, word for word
+  - [Each paragraph of the project's instructions, as written]
++ Files
+  - [File name], [one line on what it is, if known]
+
 ## Rebuild from scratch
 
 1. Read this page, then the chat docs from oldest to newest.
 1. [Steps to get the project back from nothing: where the code or files are, what to install or sign in to, what to paste where.]
+1. If the Claude Project is gone: create a new Claude Project with the name above, paste the instructions from the Claude Project section into its Instructions field, and add the files listed there.
 1. Start a new chat with the next-chat prompt at the end of the newest chat doc.
 
 ## Earlier history
@@ -117,6 +127,35 @@ YYYY-MM-DD · [Claude Project name] Claude Project, or regular chat
 ```
 
 Status values: Active, Paused, On hold, Idea, Done, Cold case, Dropped.
+
+**Claude Project section** rules:
+
+- Only for a project that has a Claude Project. Leave the section out otherwise.
+- Written the first time a chat logs from inside that Claude Project. After that, each chat's first log compares the instructions and file list with what's saved. If either changed, replace the section's contents with the current ones and update "Saved". If nothing changed, update only "Last checked".
+- Instructions are copied word for word, one toggle line per paragraph, with any password, API key or similar replaced by [redacted]. Files are listed by name, not copied: say where the original lives if you know.
+- Enough to rebuild the Claude Project by hand if it's deleted. The chat docs and the next-chat prompt cover the chats.
+
+## Deleted in Claude
+
+Deleting a chat or a Claude Project in Claude never touches Craft, and the AI gets no signal when it happens. So this is only written when the user says they deleted something. Nothing in Craft is removed.
+
+**A chat was deleted.** On the dashboard, add a line under the chat's entry:
+
+```
+**Deleted in Claude:** YYYY-MM-DD. To pick it up again, start a new chat with the next-chat prompt at the end of its chat doc.
+```
+
+If the chat doc has no next-chat prompt, write one from the chat doc first and add it at the end of the doc. On All Dashboards → Recent chats, if the chat has a line, remove its claude.ai link (it no longer opens) and add "· deleted in Claude YYYY-MM-DD" to the end.
+
+**A Claude Project was deleted.** At the top of the project's dashboard, right after the status callout:
+
+```
+<callout>Claude Project deleted in Claude on YYYY-MM-DD. Everything is still here. To rebuild it, follow Rebuild from scratch below.</callout>
+```
+
+If the dashboard has no Claude Project section, say so in that callout and point to the chat docs and the newest next-chat prompt instead. On All Dashboards, add "· Claude Project deleted YYYY-MM-DD" to the project's line. The project's status doesn't change unless the user says so.
+
+Either way, add one Activity Log entry: `**YYYY-MM-DD — [Project]: [chat name or Claude Project] deleted in Claude**`, one sentence saying how to rebuild it, and the path to the dashboard. No first-prompt quote.
 
 ## All Dashboards
 

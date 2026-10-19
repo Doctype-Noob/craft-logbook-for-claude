@@ -4,9 +4,9 @@ Craft Logbook for Claude keeps a record of your work with Claude inside your own
 
 It builds five things and keeps them current:
 
-- **All Dashboards**: one green page that links every project's dashboard, with its status and last activity. Pin it in Craft and every chat you've had is two clicks away.
+- **All Dashboards**: one green page that links every project's dashboard, with its status and last activity, and your last 20 chats. Pin it in Craft and your recent chats are one click away, everything else two.
 - **Start Here**: one page that maps your space. Who you are, how you like to work, every project with its status, and where to look first. Point any AI at it, Claude or otherwise, and it can find its way around.
-- **A dashboard for each project**: the project's status, every chat newest first with a summary and where it left off, where things live, and how to rebuild the project from scratch. It has a red title and a red background so it stands out in the folder.
+- **A dashboard for each project**: the project's status, every chat newest first with a summary and where it left off, where things live, the Claude Project's instructions and file list, and how to rebuild the project from scratch. It has a red title and a red background so it stands out in the folder.
 - **One doc per chat**: your prompts word for word and Claude's complete responses, plus what was decided and where it left off.
 - **An Activity Log**: one short entry per chat across every project, each pointing to its chat doc.
 
@@ -81,7 +81,7 @@ One naming note: Craft has its own Logbook, where completed tasks go. This plugi
 
 ## Coming from 0.2.x
 
-Nothing to do. The next chat Claude logs builds All Dashboards from your Start Here table and tells you where it is. Pin it and star it. Running setup again does the same thing and also updates your Logbook Format doc.
+Nothing to do. The next chat Claude logs builds All Dashboards if you don't have it yet, or adds the Recent chats section if you do, and starts filling it. Running setup again does the same, fills Recent chats from your last 20 chats if Search and reference chats is on, and updates your Logbook Format doc.
 
 ## Coming from 0.1.x
 
@@ -89,7 +89,8 @@ Run setup again. It adds the Logbook Format doc and the new settings to your Sta
 
 ## What it won't do
 
-- **Delete anything.** Claude lists things that should go and you delete them.
+- **Delete anything.** Claude lists things that should go and you delete them. Deleting a chat or a Claude Project in Claude doesn't touch Craft either. Tell Claude you deleted one and it marks it Deleted in Claude on the dashboard, with what you need to rebuild it: the chat's next-chat prompt, or the Claude Project's saved instructions and file list.
+- **List chats inside Claude Projects on All Dashboards from a regular chat.** A regular chat can't see them. They show up in Recent chats once they're logged from inside their project.
 - **Rename or move your docs.** It only renames docs it created, such as a chat doc once you tell it the chat's name.
 - **Log on a timer in chat.** In claude.ai chat, Claude logs because the plugin's skill and your always-log preference tell it to, not because a background process fires. It's reliable, not guaranteed. The first log in a chat is the one most likely to be missed; once a chat has its doc, Claude adds every exchange. If a reply that mattered doesn't end with a log line, run log-session. In Claude Code and Cowork, a startup hook also reminds Claude the logbook exists.
 - **See every chat when backfilling.** Inside a Claude Project, Claude can only read that project's chats, and only with Settings > Search and reference chats turned on.

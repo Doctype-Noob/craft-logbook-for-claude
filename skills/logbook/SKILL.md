@@ -13,7 +13,7 @@ The record has five layers:
 
 1. **All Dashboards**: "📌 All Dashboards" in the logbook folder. The page the user pins: one line per project, linking to its dashboard, with its status and last activity, and the last 20 chats, each linking to its chat doc. Green title and green page background. This is the way in, so it has to be right every time.
 2. **Start Here**: one page that maps the whole space. Who the user is, how they work, every project with its status and its dashboard, and the logbook settings.
-3. **A dashboard per project**: "📌 [Project] — Overview and Chat Log" in the project's folder. Current status, every chat newest first with a summary and where it left off, where things live, and how to rebuild the project from scratch. Red title and red page background so it stands out among the other docs.
+3. **A dashboard per project**: "📌 [Project] — Overview and Chat Log" in the project's folder. Current status, every chat newest first with a summary and where it left off, where things live, the Claude Project's instructions and files if it has one, and how to rebuild the project from scratch. Red title and red page background so it stands out among the other docs.
 4. **A doc per chat**: "[Chat name] — Decisions and Prompt Log" in the project's folder. The user's prompts word for word and your complete responses. Source of truth.
 5. **Activity Log** (one for the whole space): one short entry per chat, pointing to its chat doc.
 
@@ -68,8 +68,9 @@ Pick the project in Start Here's table that this chat is about. If the chat is i
 2. **Create the chat doc** in the project's folder: "[Chat name] — Decisions and Prompt Log". You can't see the chat's title, so use a short suggested name based on the topic, and ask the user once in your reply what the chat is called in their sidebar. If they answer, rename the doc, its dashboard entry and its Recent chats line to match. If they don't, keep your name. Write the header and every exchange so far.
 3. **Add the chat to the top of the dashboard's Chats list**, right under the "Chats, newest first" heading, with the link to the chat doc, Summary, Result and Left off. Use the Craft app link the connector returns when it creates the doc. Update the dashboard's status callout.
 4. **Add one entry to the Activity Log**, at the bottom, pointing to the chat doc, with the user's first prompt of the chat word for word.
-5. **Add the chat's line at the top of All Dashboards → Recent chats**: date, chat name (plain text; you can't see this chat's link), project or Other, and **log** linking the chat doc. Then trim the list to 20 (see Keeping All Dashboards current).
-6. **Update Start Here and All Dashboards** if the project is new, its status changed, or its last activity date changed. In Start Here, edit only that project's row and the "Last updated" date. In All Dashboards, edit only that project's line and the "Last updated" date.
+5. **Save the Claude Project.** If this chat is inside a Claude Project, compare its name, instructions and file list (you can see them in this conversation; a Projects tool can list the files) with the dashboard's **Claude Project** section. Write the section if there is none, replace its contents if anything changed, or update only "Last checked" if nothing did. Format and rules in `references/formats.md`. Skip this in a regular chat.
+6. **Add the chat's line at the top of All Dashboards → Recent chats**: date, chat name (plain text; you can't see this chat's link), project or Other, and **log** linking the chat doc. Then trim the list to 20 (see Keeping All Dashboards current).
+7. **Update Start Here and All Dashboards** if the project is new, its status changed, or its last activity date changed. In Start Here, edit only that project's row and the "Last updated" date. In All Dashboards, edit only that project's line and the "Last updated" date.
 
 ## Every exchange after that
 
@@ -100,6 +101,16 @@ When the user says "wrap up", "done for today" or similar, or the work reaches a
 3. Set Left off, at the top of the chat doc and in the dashboard entry, to say the next-chat prompt is at the end of the chat doc.
 
 Don't write one at every reply. Only at a stopping point.
+
+## When the user deletes something in Claude
+
+Deleting a chat or a Claude Project in Claude doesn't touch Craft, and you get no signal when it happens. If the user asks, say so plainly: the Craft record stays. When the user tells you they deleted a chat or a Claude Project, mark it as **Deleted in Claude** as described in `references/formats.md`:
+
+- **A chat**: a Deleted in Claude line under its dashboard entry pointing to its next-chat prompt (write one from the chat doc first if it has none), and its Recent chats line loses its dead link and gets "deleted in Claude" and the date.
+- **A Claude Project**: a callout at the top of its dashboard pointing to Rebuild from scratch, and "Claude Project deleted" with the date on its All Dashboards line. Don't change the project's status unless the user asks.
+- One Activity Log entry either way.
+
+Never remove anything in Craft because something was deleted in Claude. If the user wants the Craft docs gone too, list them and let them delete them.
 
 ## New projects
 

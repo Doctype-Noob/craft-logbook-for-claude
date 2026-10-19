@@ -11,6 +11,7 @@ One page to pin. Every chat is now two clicks from it.
 - Start Here gets a section 6 that tells any AI, not only Claude, to keep All Dashboards current.
 - Claude tells you to pin and star All Dashboards when it creates it. Craft's connector can't do either, so it's one right-click for you.
 - Two new README screenshots: All Dashboards, and the logbook folder with it pinned and starred.
+- Setup updates an older Logbook Format doc by adding only what changed, under a dated heading, instead of pasting the whole spec again.
 
 ## 0.2.5 (2026-10-18)
 

@@ -120,7 +120,7 @@ Status values: Active, Paused, On hold, Idea, Done, Cold case, Dropped.
 
 ## All Dashboards
 
-Title: `📌 All Dashboards`. One per logbook, in the logbook folder. It's the page the user pins: one line per project, each linking to that project's dashboard, so every chat is two clicks away. Same coloring rule as a dashboard, in the All Dashboards color: for green, the title is #2E7D32 (dark mode #66BB6A), set as the page block's own color, and the page gets a solid backdrop #1B7A34. Body text stays the default black. Never set a page-wide text color or theme.
+Title: `📌 All Dashboards`. One per logbook, in the logbook folder. It's the page the user pins: one line per project, each linking to that project's dashboard, so every chat is two clicks away, and the last 20 chats, each one click away. Same coloring rule as a dashboard, in the All Dashboards color: for green, the title is #2E7D32 (dark mode #66BB6A), set as the page block's own color, and the page gets a solid backdrop #1B7A34. Body text stays the default black. Never set a page-wide text color or theme.
 
 ```
 <callout>Pin this page in its folder and star it so it's always in Craft's sidebar (right-click it for both). It links to every project dashboard and is kept current by the AI that logs here. Last updated YYYY-MM-DD.</callout>
@@ -129,6 +129,14 @@ Title: `📌 All Dashboards`. One per logbook, in the logbook folder. It's the p
 
 - [📌 Project](craft link to the dashboard) · [Status] · YYYY-MM-DD
 - [📌 Older project](link) · [Status] · YYYY-MM-DD
+
+## Recent chats
+
+The last 20 chats, newest first. The chat name opens it in Claude; log opens its Craft doc. Chats inside Claude Projects show up here once they're logged from inside their project: a regular chat can't list them.
+
+- YYYY-MM-DD · [Chat name](claude.ai link to the chat) · [Project] · [log](craft link to the chat doc)
+- YYYY-MM-DD · Chat name, no link yet · Other · [log](craft link to the chat doc)
+- YYYY-MM-DD · [Chat name](claude.ai link) · not logged
 
 ## Projects without a dashboard yet
 
@@ -145,6 +153,17 @@ Title: `📌 All Dashboards`. One per logbook, in the logbook folder. It's the p
 - **Projects without a dashboard yet** holds the projects in Start Here's table that have no dashboard, linking to their Read first doc. When one gets a dashboard, its line moves up: add it at the top of Project dashboards and remove it here. Leave the section out if every project has a dashboard.
 - Projects marked Dropped stay in Start Here's table but come off this page.
 - Update "Last updated" in the callout whenever a line changes.
+- Sections in this order: Project dashboards, Recent chats, Projects without a dashboard yet, Across all projects.
+
+**Recent chats** rules:
+
+- One line per chat: the date the chat was first logged, the chat's name as it appears in Claude's sidebar, the project (or Other), and **log** linking the chat doc. Nothing else.
+- A chat's first log adds its line at the top. If the list then has more than 20 lines, remove lines from the bottom until it has 20. The chat docs stay; only the pointer goes.
+- The chat name links to the chat on claude.ai when the link is known. A chat can't see its own link, so its first line has the name as plain text. Any later run that lists recent chats (setup, backfill, or a chat that lists them for another reason) adds the missing links to lines whose names match.
+- When the chat doc is renamed to the chat's sidebar name, rename the line too.
+- A chat that isn't logged in this space says "not logged", or where it was logged instead ("logged in [other space or tool]"), in place of the project and log link. If it gets logged later, remove that line and add the logged one at the top.
+- One line per chat. Before adding a line, check the list for one with the same name or link. If there is one, remove it and add the new line at the top, so a chat never appears twice.
+- A regular chat can't list chats inside Claude Projects, so those never come from a listing. They appear only when they're logged from inside their project.
 
 ## Activity Log entry
 
@@ -208,7 +227,7 @@ Sections in this order. Section numbers help another AI find its way.
 
 ## 6. Keeping this page current
 
-When a chat changes a project's status or last activity, update its row here and its line in 📌 All Dashboards. A new project gets a row here, a folder with a 📌 dashboard, and a line at the top of All Dashboards.
+When a chat changes a project's status or last activity, update its row here and its line in 📌 All Dashboards. A new project gets a row here, a folder with a 📌 dashboard, and a line at the top of All Dashboards. Every chat's first log also adds its line at the top of All Dashboards → Recent chats, which keeps the newest 20.
 ```
 
 "Read first" holds the project's dashboard title.

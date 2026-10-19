@@ -11,7 +11,7 @@ The user keeps a record of their work with Claude in their Craft space. Your job
 
 The record has five layers:
 
-1. **All Dashboards**: "📌 All Dashboards" in the logbook folder. The page the user pins: one line per project, linking to its dashboard, with its status and last activity. Green title and green page background. This is the way in, so it has to be right every time.
+1. **All Dashboards**: "📌 All Dashboards" in the logbook folder. The page the user pins: one line per project, linking to its dashboard, with its status and last activity, and the last 20 chats, each linking to its chat doc. Green title and green page background. This is the way in, so it has to be right every time.
 2. **Start Here**: one page that maps the whole space. Who the user is, how they work, every project with its status and its dashboard, and the logbook settings.
 3. **A dashboard per project**: "📌 [Project] — Overview and Chat Log" in the project's folder. Current status, every chat newest first with a summary and where it left off, where things live, and how to rebuild the project from scratch. Red title and red page background so it stands out among the other docs.
 4. **A doc per chat**: "[Chat name] — Decisions and Prompt Log" in the project's folder. The user's prompts word for word and your complete responses. Source of truth.
@@ -25,7 +25,7 @@ Formats for every page and entry are in `references/formats.md`. Read it before 
 2. Read it. Its **Logbook settings** section holds the logging mode, the dashboard color, the All Dashboards color, the always-log status, and the IDs of the logbook folder, All Dashboards, the Activity Log, the Logbook Format doc and the Other chats folder. Its project table tells you each project's folder and dashboard.
 3. If there is no Start Here page, the logbook isn't set up. Don't create one silently. Tell the user in one sentence and offer to run setup.
 4. If Start Here has no Logbook Format doc or no dashboard color in its settings, it was set up by an older version. Carry on with the defaults in `references/formats.md`, and offer once to run setup to update it.
-5. If Start Here's settings list no All Dashboards, look for a doc titled "📌 All Dashboards" in the logbook folder by listing the folder (not by search). If there is none, create it before your first log in this conversation: format and colors in `references/formats.md`, one line per project in Start Here's table (dashboards first, then projects without one), and the links to Start Here and the Activity Log. Add its ID to Start Here's settings and Document IDs, and tell the user in one line where it is and to pin and star it: right-click it in Craft, Pin keeps it at the top of its folder and Star puts it in the sidebar. The connector can't do either, so the user has to.
+5. If Start Here's settings list no All Dashboards, look for a doc titled "📌 All Dashboards" in the logbook folder by listing the folder (not by search). If there is none, create it before your first log in this conversation: format and colors in `references/formats.md`, one line per project in Start Here's table (dashboards first, then projects without one), an empty Recent chats section that this chat's first log starts, and the links to Start Here and the Activity Log. Add its ID to Start Here's settings and Document IDs, and tell the user in one line where it is and to pin and star it: right-click it in Craft, Pin keeps it at the top of its folder and Star puts it in the sidebar. The connector can't do either, so the user has to.
 6. If the Craft connector isn't connected, say so in one sentence and stop. Nothing else here works without it.
 
 Read Start Here once per conversation, not before every write.
@@ -39,6 +39,14 @@ If the Logbook settings don't say "Always-log preference: added" with the v0.2.0
 **Don't wait for a decision.** A reply that lays out options or research is worth logging as it stands. Log at the end of the reply where it happens, not at the end of the chat. Chats often end without a goodbye, so a log you planned for later may never be written.
 
 **After the first log, log every exchange.** Once this chat has a chat doc, append every prompt and response to it at the end of each reply, without judging whether it's worth keeping. Only skip a bare greeting or "thanks". This is the rule that keeps the record complete, so follow it even when the exchange seems small.
+
+**Log first, answer last.** In many Claude apps, text written before a tool call shows only as a short summary, and only the text after the last tool call shows in full. If you write the answer and then log, the user sees the log line and loses the answer. So in every reply that logs:
+
+1. Do the work the user asked for (searches, edits, files).
+2. Make all the log writes, with the response written into the chat doc as you're about to give it.
+3. Then write your whole answer as the last text in the reply, ending with the log line.
+
+"At the end of that same reply" in the always-log line means the log line comes last, not the writes. If a write fails, say so in that last line instead.
 
 Don't start a chat doc for small talk or a quick factual question with nothing to keep.
 
@@ -57,10 +65,11 @@ Pick the project in Start Here's table that this chat is about. If the chat is i
 ## Writing the first log of a chat
 
 1. **Make sure the project has a dashboard.** If its folder has no "📌 … — Overview and Chat Log" doc, create one (format in `references/formats.md`). Color it as described under "Dashboard color" at the end of this skill: title and page background only, never the body text. If the folder holds older docs from before v0.2.0, such as an Overview or a Decisions Log, don't rename, convert or move them: link them under **Earlier history** on the new dashboard, using each doc's Craft link (read the doc with its metadata to get the ready-made Craft app link; never list a plain title). Then point the project's "Read first" in Start Here at the new dashboard, even when the project already had a row, and add the dashboard to All Dashboards (see Keeping All Dashboards current).
-2. **Create the chat doc** in the project's folder: "[Chat name] — Decisions and Prompt Log". You can't see the chat's title, so use a short suggested name based on the topic, and ask the user once in your reply what the chat is called in their sidebar. If they answer, rename the doc and its dashboard entry to match. If they don't, keep your name. Write the header and every exchange so far.
+2. **Create the chat doc** in the project's folder: "[Chat name] — Decisions and Prompt Log". You can't see the chat's title, so use a short suggested name based on the topic, and ask the user once in your reply what the chat is called in their sidebar. If they answer, rename the doc, its dashboard entry and its Recent chats line to match. If they don't, keep your name. Write the header and every exchange so far.
 3. **Add the chat to the top of the dashboard's Chats list**, right under the "Chats, newest first" heading, with the link to the chat doc, Summary, Result and Left off. Use the Craft app link the connector returns when it creates the doc. Update the dashboard's status callout.
 4. **Add one entry to the Activity Log**, at the bottom, pointing to the chat doc, with the user's first prompt of the chat word for word.
-5. **Update Start Here and All Dashboards** if the project is new, its status changed, or its last activity date changed. In Start Here, edit only that project's row and the "Last updated" date. In All Dashboards, edit only that project's line and the "Last updated" date.
+5. **Add the chat's line at the top of All Dashboards → Recent chats**: date, chat name (plain text; you can't see this chat's link), project or Other, and **log** linking the chat doc. Then trim the list to 20 (see Keeping All Dashboards current).
+6. **Update Start Here and All Dashboards** if the project is new, its status changed, or its last activity date changed. In Start Here, edit only that project's row and the "Last updated" date. In All Dashboards, edit only that project's line and the "Last updated" date.
 
 ## Every exchange after that
 
@@ -69,7 +78,7 @@ Pick the project in Start Here's table that this chat is about. If the chat is i
 3. Update the Activity Log entry's sentence only if the chat's headline changed. Don't add a second Activity Log entry for the same chat on the same day.
 4. Update Start Here and the project's line in All Dashboards only when the project's status changes.
 
-Keep track in your own context of the IDs you created or touched (chat doc, its header blocks, the dashboard entry, the Activity Log entry, the project's All Dashboards line), so you can update them without searching.
+Keep track in your own context of the IDs you created or touched (chat doc, its header blocks, the dashboard entry, the Activity Log entry, the project's All Dashboards line, the chat's Recent chats line), so you can update them without searching.
 
 ### Prompts and responses
 
@@ -111,11 +120,20 @@ All Dashboards is the page the user pins, so a stale line there means a lost cha
 - **A project is marked Dropped**: remove its line.
 - **Links**: use the Craft app link for the dashboard. The connector returns one when it creates a doc; for an existing doc, read it with its metadata to get the clickable link. Never list a plain title.
 
+**Recent chats** (rules in `references/formats.md`):
+
+- **A chat's first log** adds its line at the top of Recent chats, right under the section's intro line. Check first for a line with the same chat name or link (a "not logged" line, say); if there is one, remove it, so the chat appears once.
+- **More than 20 lines**: remove lines from the bottom until there are 20. Read the section back after adding so you count what's really there, not what you expect.
+- **The chat doc is renamed**: rename its Recent chats line in the same step.
+- **Missing links**: a chat can't see its own claude.ai link. When you list recent chats for any reason (setup, backfill), add the link to any line whose chat name matches and has none.
+- **No Recent chats section** on an older All Dashboards: add it right after Project dashboards, with the intro line from `references/formats.md`, and touch nothing else on the page.
+- **Chats inside Claude Projects** can't be listed from a regular chat. They appear only when they're logged from inside their project. Don't go looking for them.
+
 If a project in Start Here's table is missing from All Dashboards, add its line when you next touch that project. If All Dashboards' ID in Start Here doesn't resolve, find it by listing the logbook folder and fix the ID.
 
 ## Rules
 
-- **Never delete.** Don't delete Craft documents, folders, blocks or log entries. If something should go, list it for the user and let them delete it. Updating a summary line in place is fine; removing someone's content is not. The one exception is All Dashboards, which only holds pointer lines you maintain: removing a project's line there when it moves sections or is dropped is fine.
+- **Never delete.** Don't delete Craft documents, folders, blocks or log entries. If something should go, list it for the user and let them delete it. Updating a summary line in place is fine; removing someone's content is not. The one exception is All Dashboards, which only holds pointer lines you maintain: removing a project's line there when it moves sections or is dropped is fine, and so is removing Recent chats lines past the newest 20 or a duplicate line for the same chat.
 - **Never rename or move the user's own docs.** Rename only docs you created in this conversation (the chat doc, once the user gives its name).
 - **Don't copy detail upward.** The dashboard and Activity Log point to the chat doc; they don't repeat it.
 - **Refer to docs by title and path** in your replies, such as *Current Projects → Website → 📌 Website — Overview and Chat Log*.
@@ -130,7 +148,7 @@ If a project in Start Here's table is missing from All Dashboards, add its line 
 The Craft connector's tool names and arguments can change, so go by the tool descriptions you see. Typical operations: search the space by title, list folders and documents, read a document as markdown, create a document in a folder, add blocks at the end of a document or before or after a given block, update a block, style a page, and create a folder.
 
 - **Append** to a chat doc or the Activity Log by adding blocks at the end of its page; don't replace the page.
-- **Newest chat first** on a dashboard: add the new entry before the first existing chat entry, or right after the "Chats, newest first" heading if there is none.
+- **Newest chat first** on a dashboard: add the new entry before the first existing chat entry, or right after the "Chats, newest first" heading if there is none. Same for Recent chats on All Dashboards: before its first line, or right after its intro line if the list is empty.
 - **Toggles** need their children indented two spaces and starting with "- ", or the toggle comes out empty. When you add a line inside an existing toggle, or update the text of any line that is already inside one, the connector can drop the indent and move the line outside the toggle. After any such add or update, set the line's indentation level back to 1 in the same call or the next one, and read it back if unsure.
 - **No angle brackets** around words in your markdown, such as "<Project>". The connector reads them as HTML and rejects the write. Use square brackets for placeholders.
 - **Dashboard color**: two settings, nothing else.

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.6 (2026-10-19)
+
+One page to pin. Every chat is now two clicks from it.
+
+- New **📌 All Dashboards** page in the logbook folder: one line per project linking to its dashboard, with its status and last activity, plus links to Start Here and the Activity Log. Green title and green background, so it doesn't get lost among the red project dashboards.
+- Claude keeps it current. When a project gets a dashboard, or its status or last activity changes, its line changes in the same write as its Start Here row.
+- Projects that don't have a dashboard yet are listed too, linking to their older Overview or Current State, and move up when they get one.
+- Already on 0.2.x? The next logged chat builds All Dashboards from your Start Here table. Setup does it too.
+- Start Here gets a section 6 that tells any AI, not only Claude, to keep All Dashboards current.
+
 ## 0.2.5 (2026-10-18)
 
 Listing details for Claude's directory. No change to how the plugin logs.

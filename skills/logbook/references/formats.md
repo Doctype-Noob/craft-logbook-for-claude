@@ -8,6 +8,7 @@ Markdown here is as the Craft connector accepts it: `>` makes a quote block, `+`
 
 ```
 [Logbook folder, default "Claude Logbook"]
+  📌 All Dashboards       (the page to pin: links every project dashboard)
   Start Here
   Activity Log
   Logbook Format          (this spec)
@@ -20,7 +21,7 @@ Markdown here is as the Craft connector accepts it: `>` makes a quote block, `+`
     [Chat name] — Decisions and Prompt Log
 ```
 
-Defaults when Start Here doesn't say otherwise: logging mode full, dashboard color red, active projects folder Current Projects.
+Defaults when Start Here doesn't say otherwise: logging mode full, dashboard color red, All Dashboards color green, active projects folder Current Projects.
 
 ## Chat doc
 
@@ -117,6 +118,34 @@ YYYY-MM-DD · [Claude Project name] Claude Project, or regular chat
 
 Status values: Active, Paused, On hold, Idea, Done, Cold case, Dropped.
 
+## All Dashboards
+
+Title: `📌 All Dashboards`. One per logbook, in the logbook folder. It's the page the user pins: one line per project, each linking to that project's dashboard, so every chat is two clicks away. Same coloring rule as a dashboard, in the All Dashboards color: for green, the title is #2E7D32 (dark mode #66BB6A), set as the page block's own color, and the page gets a solid backdrop #1B7A34. Body text stays the default black. Never set a page-wide text color or theme.
+
+```
+<callout>Pin this page. It links to every project dashboard and is kept current by the AI that logs here. Last updated YYYY-MM-DD.</callout>
+
+## Project dashboards
+
+- [📌 Project](craft link to the dashboard) · [Status] · YYYY-MM-DD
+- [📌 Older project](link) · [Status] · YYYY-MM-DD
+
+## Projects without a dashboard yet
+
+- [Read first doc title](craft link to it) ([Project]) · [Status] · YYYY-MM-DD
+
+## Across all projects
+
+- [Start Here](craft link): the map of this space.
+- [Activity Log](craft link): one entry per chat across every project, newest at the bottom.
+```
+
+- Each line is the link, then the project's status and last activity date, the same as its row in Start Here. Nothing else; the detail lives on the dashboard.
+- A new dashboard's line goes at the top of **Project dashboards**. Lines are updated in place after that, not reordered.
+- **Projects without a dashboard yet** holds the projects in Start Here's table that have no dashboard, linking to their Read first doc. When one gets a dashboard, its line moves up: add it at the top of Project dashboards and remove it here. Leave the section out if every project has a dashboard.
+- Projects marked Dropped stay in Start Here's table but come off this page.
+- Update "Last updated" in the callout whenever a line changes.
+
 ## Activity Log entry
 
 One entry per chat per day, at the bottom of the Activity Log (newest at the bottom). No responses; the chat doc has them.
@@ -140,7 +169,7 @@ Sections in this order. Section numbers help another AI find its way.
 
 ## 1. How to find anything
 
-1. Find the project in the table in section 4. Open its dashboard (Read first).
+1. Open 📌 All Dashboards and pick the project, or find it in the table in section 4. Open its dashboard (Read first).
 2. The dashboard lists every chat, newest first, with where each one left off. Open a chat's doc for the prompts and responses word for word.
 3. For a timeline across all projects, read the Activity Log.
 4. To write to this logbook from any AI, follow the Logbook Format doc.
@@ -162,17 +191,24 @@ Sections in this order. Section numbers help another AI find its way.
 
 - Logging mode: full
 - Dashboard color: red
+- All Dashboards color: green
 - Always-log preference: not yet (or added YYYY-MM-DD, v0.2.0 line)
 - Active projects folder: Current Projects
 - Logbook folder: (name and ID; default name Claude Logbook)
+- All Dashboards: (ID)
 - Other chats folder: (ID)
 - Activity Log: (ID)
 - Logbook Format: (ID)
 
 + Document IDs (for AI tools reading Craft by ID)
   - Start Here: (ID)
+  - All Dashboards: (ID)
   - Activity Log: (ID)
   - Logbook Format: (ID)
+
+## 6. Keeping this page current
+
+When a chat changes a project's status or last activity, update its row here and its line in 📌 All Dashboards. A new project gets a row here, a folder with a 📌 dashboard, and a line at the top of All Dashboards.
 ```
 
 "Read first" holds the project's dashboard title.

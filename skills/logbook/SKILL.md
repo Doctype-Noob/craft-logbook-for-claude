@@ -7,24 +7,26 @@ description: Save this conversation to the user's Craft logbook. Use in any conv
 
 The user keeps a record of their work with Claude in their Craft space. Your job is to keep that record current as a background habit, so the user never has to ask, can find any prompt and response later, and never has to re-explain a project in a new chat.
 
-**"Logbook" means this record, not Craft's task Logbook.** Craft has its own Logbook, a list of completed tasks, and the Craft connector can list it. When the user says "my logbook", "check the logbook" or "add it to the logbook", they mean Start Here, the dashboards, the chat docs and the Activity Log described here. Only go to Craft's task Logbook if they clearly ask about completed tasks or to-dos.
+**"Logbook" means this record, not Craft's task Logbook.** Craft has its own Logbook, a list of completed tasks, and the Craft connector can list it. When the user says "my logbook", "check the logbook" or "add it to the logbook", they mean Start Here, All Dashboards, the project dashboards, the chat docs and the Activity Log described here. Only go to Craft's task Logbook if they clearly ask about completed tasks or to-dos.
 
-The record has four layers:
+The record has five layers:
 
-1. **Start Here**: one page that maps the whole space. Who the user is, how they work, every project with its status and its dashboard, and the logbook settings.
-2. **A dashboard per project**: "📌 [Project] — Overview and Chat Log" in the project's folder. Current status, every chat newest first with a summary and where it left off, where things live, and how to rebuild the project from scratch. Red title and red page background so it stands out among the other docs.
-3. **A doc per chat**: "[Chat name] — Decisions and Prompt Log" in the project's folder. The user's prompts word for word and your complete responses. Source of truth.
-4. **Activity Log** (one for the whole space): one short entry per chat, pointing to its chat doc.
+1. **All Dashboards**: "📌 All Dashboards" in the logbook folder. The page the user pins: one line per project, linking to its dashboard, with its status and last activity. Green title and green page background. This is the way in, so it has to be right every time.
+2. **Start Here**: one page that maps the whole space. Who the user is, how they work, every project with its status and its dashboard, and the logbook settings.
+3. **A dashboard per project**: "📌 [Project] — Overview and Chat Log" in the project's folder. Current status, every chat newest first with a summary and where it left off, where things live, and how to rebuild the project from scratch. Red title and red page background so it stands out among the other docs.
+4. **A doc per chat**: "[Chat name] — Decisions and Prompt Log" in the project's folder. The user's prompts word for word and your complete responses. Source of truth.
+5. **Activity Log** (one for the whole space): one short entry per chat, pointing to its chat doc.
 
 Formats for every page and entry are in `references/formats.md`. Read it before your first write in a session. The same spec lives in Craft as **Logbook Format** so other AI tools can write matching docs.
 
 ## Before anything else: find Start Here
 
 1. Search the user's Craft space for a document titled **Start Here** (the title may have a suffix, such as "Start Here — Josh × Claude").
-2. Read it. Its **Logbook settings** section holds the logging mode, the dashboard color, the always-log status, and the IDs of the logbook folder, the Activity Log, the Logbook Format doc and the Other chats folder. Its project table tells you each project's folder and dashboard.
+2. Read it. Its **Logbook settings** section holds the logging mode, the dashboard color, the All Dashboards color, the always-log status, and the IDs of the logbook folder, All Dashboards, the Activity Log, the Logbook Format doc and the Other chats folder. Its project table tells you each project's folder and dashboard.
 3. If there is no Start Here page, the logbook isn't set up. Don't create one silently. Tell the user in one sentence and offer to run setup.
 4. If Start Here has no Logbook Format doc or no dashboard color in its settings, it was set up by an older version. Carry on with the defaults in `references/formats.md`, and offer once to run setup to update it.
-5. If the Craft connector isn't connected, say so in one sentence and stop. Nothing else here works without it.
+5. If Start Here's settings list no All Dashboards, look for a doc titled "📌 All Dashboards" in the logbook folder by listing the folder (not by search). If there is none, create it before your first log in this conversation: format and colors in `references/formats.md`, one line per project in Start Here's table (dashboards first, then projects without one), and the links to Start Here and the Activity Log. Add its ID to Start Here's settings and Document IDs, and tell the user in one line where it is and to pin it.
+6. If the Craft connector isn't connected, say so in one sentence and stop. Nothing else here works without it.
 
 Read Start Here once per conversation, not before every write.
 
@@ -54,20 +56,20 @@ Pick the project in Start Here's table that this chat is about. If the chat is i
 
 ## Writing the first log of a chat
 
-1. **Make sure the project has a dashboard.** If its folder has no "📌 … — Overview and Chat Log" doc, create one (format in `references/formats.md`). Color it as described under "Dashboard color" at the end of this skill: title and page background only, never the body text. If the folder holds older docs from before v0.2.0, such as an Overview or a Decisions Log, don't rename, convert or move them: link them under **Earlier history** on the new dashboard, using each doc's Craft link (read the doc with its metadata to get the ready-made Craft app link; never list a plain title). Then point the project's "Read first" in Start Here at the new dashboard, even when the project already had a row.
+1. **Make sure the project has a dashboard.** If its folder has no "📌 … — Overview and Chat Log" doc, create one (format in `references/formats.md`). Color it as described under "Dashboard color" at the end of this skill: title and page background only, never the body text. If the folder holds older docs from before v0.2.0, such as an Overview or a Decisions Log, don't rename, convert or move them: link them under **Earlier history** on the new dashboard, using each doc's Craft link (read the doc with its metadata to get the ready-made Craft app link; never list a plain title). Then point the project's "Read first" in Start Here at the new dashboard, even when the project already had a row, and add the dashboard to All Dashboards (see Keeping All Dashboards current).
 2. **Create the chat doc** in the project's folder: "[Chat name] — Decisions and Prompt Log". You can't see the chat's title, so use a short suggested name based on the topic, and ask the user once in your reply what the chat is called in their sidebar. If they answer, rename the doc and its dashboard entry to match. If they don't, keep your name. Write the header and every exchange so far.
 3. **Add the chat to the top of the dashboard's Chats list**, right under the "Chats, newest first" heading, with the link to the chat doc, Summary, Result and Left off. Use the Craft app link the connector returns when it creates the doc. Update the dashboard's status callout.
 4. **Add one entry to the Activity Log**, at the bottom, pointing to the chat doc, with the user's first prompt of the chat word for word.
-5. **Update Start Here** if the project is new, its status changed, or its last activity date changed. Edit only that project's row and the "Last updated" date.
+5. **Update Start Here and All Dashboards** if the project is new, its status changed, or its last activity date changed. In Start Here, edit only that project's row and the "Last updated" date. In All Dashboards, edit only that project's line and the "Last updated" date.
 
 ## Every exchange after that
 
 1. Append the new prompt and your response to the chat doc.
 2. If the chat's summary, result or where it left off changed, update those lines at the top of the chat doc and in the chat's dashboard entry, and the dashboard's status callout if the project's status changed. Rewrite them in place; they describe the chat as it stands now.
 3. Update the Activity Log entry's sentence only if the chat's headline changed. Don't add a second Activity Log entry for the same chat on the same day.
-4. Update Start Here only when the project's status changes.
+4. Update Start Here and the project's line in All Dashboards only when the project's status changes.
 
-Keep track in your own context of the IDs you created (chat doc, its header blocks, the dashboard entry, the Activity Log entry), so you can update them without searching.
+Keep track in your own context of the IDs you created or touched (chat doc, its header blocks, the dashboard entry, the Activity Log entry, the project's All Dashboards line), so you can update them without searching.
 
 ### Prompts and responses
 
@@ -97,11 +99,23 @@ When work starts on something that has no project in Start Here:
 1. Create a folder for it where the user keeps active projects (Start Here's settings say where; the default is a folder named **Current Projects**).
 2. Inside it, create the dashboard, then the chat doc.
 3. Add a row to the Start Here project table pointing "Read first" at the dashboard.
-4. Tell the user in one line where the new folder is.
+4. Add the dashboard's line at the top of All Dashboards → Project dashboards.
+5. Tell the user in one line where the new folder is.
+
+## Keeping All Dashboards current
+
+All Dashboards is the page the user pins, so a stale line there means a lost chat. Format in `references/formats.md`. Every write to it is small: one project's line and the "Last updated" date.
+
+- **A project gets a dashboard** (new project, or an older project's first chat on this layout): add a line at the top of **Project dashboards** linking to the dashboard, with its status and last activity. If the project had a line under **Projects without a dashboard yet**, remove that line.
+- **A project's status or last activity changes**: update its line in place, at the same time you update its Start Here row. Don't reorder lines.
+- **A project is marked Dropped**: remove its line.
+- **Links**: use the Craft app link for the dashboard. The connector returns one when it creates a doc; for an existing doc, read it with its metadata to get the clickable link. Never list a plain title.
+
+If a project in Start Here's table is missing from All Dashboards, add its line when you next touch that project. If All Dashboards' ID in Start Here doesn't resolve, find it by listing the logbook folder and fix the ID.
 
 ## Rules
 
-- **Never delete.** Don't delete Craft documents, folders, blocks or log entries. If something should go, list it for the user and let them delete it. Updating a summary line in place is fine; removing someone's content is not.
+- **Never delete.** Don't delete Craft documents, folders, blocks or log entries. If something should go, list it for the user and let them delete it. Updating a summary line in place is fine; removing someone's content is not. The one exception is All Dashboards, which only holds pointer lines you maintain: removing a project's line there when it moves sections or is dropped is fine.
 - **Never rename or move the user's own docs.** Rename only docs you created in this conversation (the chat doc, once the user gives its name).
 - **Don't copy detail upward.** The dashboard and Activity Log point to the chat doc; they don't repeat it.
 - **Refer to docs by title and path** in your replies, such as *Current Projects → Website → 📌 Website — Overview and Chat Log*.
@@ -124,4 +138,5 @@ The Craft connector's tool names and arguments can change, so go by the tool des
   2. The page background: a solid backdrop in the dashboard color (red is #c10007). This is what shows on Craft's folder thumbnails.
 
   Never set the page's text color, theme color or a page theme. A page text color turns every line of the dashboard red and makes it hard to read; the body text stays the default black. If a dashboard already has a page text color, reset the page to the default theme with the same backdrop, then set the title color again.
+- **All Dashboards color**: the same two settings in green, so it stands apart from the red project dashboards. Title: color #2E7D32, dark color #66BB6A. Page background: solid backdrop #1B7A34.
 - **Renaming a doc** is an update to its page block's text.

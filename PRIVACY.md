@@ -9,7 +9,7 @@ Craft Logbook for Claude is a free plugin published by Laronge Intellectual Prop
 - **It writes to your own Craft space.** When Claude logs a chat, it writes your prompts and its responses into documents in the Craft space you approved when you connected Craft. That's the point of the plugin. In summary mode, it writes only a short account of each chat, without your prompts or Claude's responses.
 - **It talks only to Craft.** The plugin connects to Craft's official MCP server at `https://mcp.craft.do/my/mcp`, using your own Craft sign-in. It sends nothing anywhere else.
 - **It leaves out secrets.** Claude is told to replace passwords, API keys and card numbers with [redacted] before writing.
-- **It stores nothing itself.** The only script, `hooks/session-start.sh`, prints a one-paragraph reminder at the start of a Claude Code or Cowork session. It reads nothing, sends nothing and writes nothing.
+- **It stores nothing itself.** The plugin has no scripts or hooks, only instructions for Claude and the Craft connector. It reads nothing, sends nothing and writes nothing on its own.
 
 ## What I can see
 

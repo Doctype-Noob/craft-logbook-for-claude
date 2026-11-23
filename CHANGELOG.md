@@ -12,6 +12,7 @@ One page to pin. Every chat is now two clicks from it.
 - Claude tells you to pin and star All Dashboards when it creates it. Craft's connector can't do either, so it's one right-click for you.
 - Two new README screenshots: All Dashboards, and the logbook folder with it pinned and starred.
 - Setup updates an older Logbook Format doc by adding only what changed, under a dated heading, instead of pasting the whole spec again.
+- Removed the session-start reminder hook and its script (2026-11-23). Claude's plugin directory accepts hooks and scripts only from verified organizations. The skill and your always-log preference still do the logging, in every app.
 
 ## 0.2.5 (2026-10-18)
 

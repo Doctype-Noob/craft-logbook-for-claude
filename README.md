@@ -91,21 +91,20 @@ Run setup again. It adds the Logbook Format doc and the new settings to your Sta
 
 - **Delete anything.** Claude lists things that should go and you delete them.
 - **Rename or move your docs.** It only renames docs it created, such as a chat doc once you tell it the chat's name.
-- **Log on a timer in chat.** In claude.ai chat, Claude logs because the plugin's skill and your always-log preference tell it to, not because a background process fires. It's reliable, not guaranteed. The first log in a chat is the one most likely to be missed; once a chat has its doc, Claude adds every exchange. If a reply that mattered doesn't end with a log line, run log-session. In Claude Code and Cowork, a startup hook also reminds Claude the logbook exists.
+- **Log on a timer in chat.** In claude.ai chat, Claude logs because the plugin's skill and your always-log preference tell it to, not because a background process fires. It's reliable, not guaranteed. The first log in a chat is the one most likely to be missed; once a chat has its doc, Claude adds every exchange. If a reply that mattered doesn't end with a log line, run log-session.
 - **See every chat when backfilling.** Inside a Claude Project, Claude can only read that project's chats, and only with Settings > Search and reference chats turned on.
 
 ## Data
 
 Everything stays between Claude and your own Craft space. The plugin connects to Craft's official MCP server at `https://mcp.craft.do/my/mcp`, using your own Craft sign-in, and only reads and writes documents in the space you approve. Chat docs include your prompts and Claude's responses, so pick summary mode if you'd rather not keep them. Claude replaces passwords, API keys and card numbers with [redacted] before writing.
 
-The plugin itself stores nothing and sends nothing anywhere else. Full privacy policy: [PRIVACY.md](PRIVACY.md). The only script, `hooks/session-start.sh`, prints a one-paragraph reminder at the start of a Claude Code or Cowork session and does nothing else.
+The plugin itself stores nothing and sends nothing anywhere else. It has no scripts or hooks, only instructions for Claude and the Craft connector. Full privacy policy: [PRIVACY.md](PRIVACY.md).
 
 ## Files
 
 - `skills/logbook/SKILL.md`: when and how Claude logs
 - `skills/logbook/references/formats.md`: the exact page and entry formats, also written to Craft as Logbook Format
 - `commands/setup.md`, `commands/log-session.md` and `commands/backfill.md`: the three commands
-- `hooks/`: the session-start reminder (Claude Code and Cowork only)
 - `.mcp.json`: the Craft connector
 - `images/`: the screenshots in this README, from a demo space
 - `PRIVACY.md`: the privacy policy
